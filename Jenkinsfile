@@ -1,11 +1,11 @@
 pipeline {
   agent any
-
   stages {
 
     stage('Clone') {
       steps {
-        git 'https://github.com/pr-an/org-devops-project.git'
+        git credentialsId: 'github-creds',
+            url: 'https://github.com/pr-an/org-devops-project.git'
       }
     }
 
@@ -24,5 +24,6 @@ pipeline {
         '''
       }
     }
+
   }
 }
