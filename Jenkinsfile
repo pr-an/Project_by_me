@@ -1,11 +1,12 @@
 pipeline {
   agent any
+
   stages {
 
     stage('Clone') {
       steps {
         git credentialsId: 'github-creds',
-            url: 'https://github.com/pr-an/org-devops-project.git'
+            url: 'https://github.com/pr-an/Project_by_me.git'
       }
     }
 
