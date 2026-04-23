@@ -1,0 +1,19 @@
+- name: Deploy website container
+  hosts: web
+  become: yes
+
+  tasks:
+
+    - name: Ensure Docker running
+      service:
+        name: docker
+        state: started
+
+    - name: Stop old container
+      shell: docker stop salunkhe-container || true
+
+    - name: Remove old container
+      shell: docker rm salunkhe-container || true
+
+    - name: Start new container
+      shell: docker run -d --name salunkhe-container -p 80:80 salunkhe-site
